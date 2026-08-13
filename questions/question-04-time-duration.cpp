@@ -22,7 +22,7 @@ public:
     Duration(int h, int m)
     {
         hours = h;
-        minutes == m;
+        minutes = m;
     }
 
     Duration operator+(Duration other)
@@ -47,7 +47,7 @@ public:
             return true;
 
         if (hours == other.hours &&
-            minutes < other.minutes)
+            minutes > other.minutes)
             return true;
 
         return false;
@@ -62,9 +62,9 @@ public:
 
 int main()
 {
-    Duration meeting1(2, 45);
-    Duration meeting2(1, 30);
-    Duration meeting3(3, 20);
+    Duration meeting1(3, 40);
+    Duration meeting2(1, 35);
+    Duration meeting3(5, 10);
 
     Duration total = meeting1 + meeting2;
 

@@ -1,0 +1,13 @@
+/*
+1. when we inherit 2 derived class ( employee and student) from
+   one base class(person), it creates 2 copies of all data members, member function
+   present in base class.Thus, 2 object of base class were created.
+
+2. The diamond inheritance problem occurs when final derived class inherits from 
+   two classes that both inherit from the same base class.Compiler shows ambiguity
+   because it is not able to decide that which copy of base class should be used.
+
+3. Virtual Inheritance solves the problem by creating only one copy of base class 
+   to be shared using 'virtual' keyword.
+
+4. Add 'virtual' keyword in student and employee class
