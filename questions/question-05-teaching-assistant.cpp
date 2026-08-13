@@ -23,15 +23,14 @@ public:
     }
 };
 
-class Student : public Person
+class Student :  virtual public Person
 {
 protected:
     int rollNo;
 
 public:
 
-    Student(string n, int r)
-        : Person(n)
+    Student(string n, int r) : Person(n)
     {
         rollNo = r;
         cout << "Student created" << endl;
@@ -44,12 +43,12 @@ public:
     }
 };
 
-class Employee : public Person
+class Employee : virtual public Person
 {
-protected:
+    protected:
     int employeeId;
 
-public:
+    public:
 
     Employee(string n, int id)
         : Person(n)
@@ -69,28 +68,21 @@ class TeachingAssistant :
     public Student,
     public Employee
 {
-private:
+    private:
     int hours;
 
-public:
+    public:
 
-    TeachingAssistant(
-        string n,
-        int r,
-        int id,
-        int h)
-        : Student(n, r),
-          Employee(n, id)
+    TeachingAssistant(string n,int r,int id,int h): Person(n), Student(n, r), Employee(n,id)
     {
         hours = h;
-        cout << "Teaching Assistant created"
-             << endl;
+        cout << "Teaching Assistant created"<< endl;
     }
 
     void display()
     {
         showPerson();
-        showRole();
+        Student::showRole();
 
         cout << "Working hours: "
              << hours << endl;
@@ -99,13 +91,10 @@ public:
 
 int main()
 {
-    TeachingAssistant ta(
-        "Aarav",
-        124,
-        501,
-        12);
-
-    ta.display();
+    TeachingAssistant ta1("Aarav",124,501,12);
+    ta1.display();
+    TeachingAssistant ta2("Rahul",315,712,18);
+    ta2.display();
 
     return 0;
 }

@@ -5,70 +5,74 @@
 
 #include <iostream>
 using namespace std;
-
-int gcd(int a, int b)
+class schedule
 {
-    if (b == 0)
-        return b;
+    public:
 
-    return gcd(a % b, b);
-}
-
-int lcm(int a, int b)
-{
-    return a * b / gcd(a, b);
-}
-
-bool isPrime(int n)
-{
-    if (n < 2)
-        return false;
-
-    for (int i = 2; i <= n / 2; i++)
+    int gcd(int a, int b)
     {
-        if (n % i == 0)
+        if (b == 0)
+            return a;
+
+        return gcd(a % b, b);
+    }
+
+    int lcm(int a, int b)
+    {
+        return a * b / gcd(a, b);
+    }
+
+    bool isPrime(int n)
+    {
+        if (n < 2)
             return false;
-    }
 
-    return true;
-}
-
-void printPrimeFactors(int n)
-{
-    cout << "Prime factors: ";
-
-    for (int i = 2; i <= n; i++)
-    {
-        while (n % i == 0)
+        for (int i = 2; i <= n / 2; i++)
         {
-            cout << n << " ";
-            n = n / i;
+            if (n % i == 0)
+                return false;
         }
+
+        return true;
     }
 
-    cout << endl;
-}
+    void printPrimeFactors(int n)
+    {
+        cout << "Prime factors: ";
 
+        for (int i = 2; i <= n; i++)
+        {
+            while (n % i == 0)
+            {
+                cout << i << " ";
+                n = n / i;
+                
+            }
+        }
+
+        cout << endl;
+    }
+};
 int main()
 {
+    schedule s;
     int machineA, machineB;
 
     cout << "Enter maintenance intervals: ";
     cin >> machineA >> machineB;
 
-    int commonDivisor = gcd(machineA, machineB);
-    int commonInterval = lcm(machineA, machineB);
+    int commonDivisor = s.gcd(machineA, machineB);
+    int commonInterval = s.lcm(machineA, machineB);
 
     cout << "GCD: " << commonDivisor << endl;
-    cout << "Next common maintenance after: "
-         << commonInterval << " days" << endl;
+    cout << "Next common maintenance after: "<< commonInterval << " days" << endl;
 
-    if (isPrime(commonInterval))
+    if (s.isPrime(commonInterval))
         cout << "Common interval is prime" << endl;
     else
         cout << "Common interval is not prime" << endl;
 
-    printPrimeFactors(commonInterval);
+    s.printPrimeFactors(commonInterval);
 
     return 0;
 }
