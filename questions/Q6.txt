@@ -1,0 +1,15 @@
+1. runtime polymorphism uses function overriding by using virtual keyword.In this program
+   calculate() is base class function (Service), at run time it is decided whether to call 
+   StudentService::calculate() or EmployeeService::calculate() based on the actual object.
+
+2. to achieve run time polymorphism base class pointer must be used as it can store object of
+   different class.
+
+3. a virtual destructor ensures that the correct derived-class destructor is called when an 
+   object is deleted through a base-class pointer.
+
+4. a template allows the same function to work with different data types without changing 
+   the code. it is used to compare and return max value btwn 2 no. 
+
+5. invalid_argument exception should be handled if input amount is negative.
+   

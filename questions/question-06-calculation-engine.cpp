@@ -54,9 +54,9 @@ template <class T>
 T maximum(T a, T b)
 {
     if (a < b)
-        return a;
+        return b;
 
-    return b;
+    return a;
 }
 
 int main()
@@ -66,8 +66,8 @@ int main()
     services[0] = new StudentService();
     services[1] = new EmployeeService();
 
-    double amount = 1000;
-    double rate = 10;
+    double amount = 500;
+    double rate = 20;
 
     try
     {
