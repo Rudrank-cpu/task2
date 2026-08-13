@@ -1,22 +1,20 @@
-//A college event team receives tasks with different priority values. Lower priority numbers represent more urgent tasks.
-
 #include <iostream>
 using namespace std;
 
 void sortPriorities(int priority[], int n)
 {
-    for (int i = 1; i <= n; i++)
+    for (int i = 1; i < n; i++)
     {
         int key = priority[i];
         int j = i - 1;
 
-        while (j > 0 && priority[j] > key)
+        while (j >= 0 && priority[j] > key)
         {
             priority[j + 1] = priority[j];
             j--;
         }
 
-        priority[j] = key;
+        priority[j + 1] = key;
     }
 }
 
@@ -27,7 +25,7 @@ int removeDuplicatePriorities(int priority[], int n)
 
     int index = 0;
 
-    for (int i = 1; i <= n; i++)
+    for (int i = 1; i < n; i++)
     {
         if (priority[i] != priority[index])
         {
@@ -36,7 +34,7 @@ int removeDuplicatePriorities(int priority[], int n)
         }
     }
 
-    return index;
+    return index + 1;
 }
 
 void display(int priority[], int n)
@@ -50,11 +48,10 @@ void display(int priority[], int n)
 int main()
 {
     int priority[] = {
-        5, 2, 8, 3, 2,
-        7, 4, 5, 1, 3
+        9, 4, 6, 4, 2, 8, 6, 1
     };
 
-    int n = 10;
+    int n = 8;
 
     cout << "Original priorities: ";
     display(priority, n);
