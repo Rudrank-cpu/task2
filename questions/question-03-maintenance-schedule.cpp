@@ -14,7 +14,7 @@ class schedule
         if (b == 0)
             return a;
 
-        return gcd(a % b, b);
+        return gcd(b, a % b);
     }
 
     int lcm(int a, int b)
